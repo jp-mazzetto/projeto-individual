@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "montserrat";
+    font-size: 20px;
+    background: linear-gradient(#5FA2CE, #003366);
+    
+}
+input::placeholder {
+    font-family: "montserrat";
+  }
+
+.logo img {
+    width: 5vw;
+    height: 10vh;
+    margin-left: 5vw;
+    float: left;
+}
+.navbar {
+    display: flex;
+    height: 13vh;
+    justify-content: space-between;
+    align-items: center;
+    background: #F5F4F9;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+    padding-right: 5vw;
+    width: 100%;
+    
+}
+a{
+    color: #003366;
+    text-decoration: none;
+}
+.nav-menu{
+    display: flex;
+    justify-content: space-around;
+    width: 35vw;
+    color: #003366;
+    align-items: center;
+}
+#entrar {
+    border: 0px;
+    border-radius: 15px;
+    background-color: #418FDE;
+    color: #003366;
+    width: 7vw;
+    height: 45px;
+    font-size: 22px;
+    position: relative;
+    cursor: pointer;
+    font-weight: lighter;
+  }
+
+.corpo{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.corpo_titulo{
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    justify-content: center;
+
+}
+#titulo_inicio{
+
+    width: 45vw;
+    height: 68vh;
+    padding-top: 40px;
+    
+}
+#titulo_texto{
+    color: black;
+    font-size:65px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: 1vw;
+}
+#subtitulo{
+    font-size: 16px;
+    margin-right: 2vw;
+    color: #003366;
+}
+#foto_baleia{
+    background-color: #F5F4F9;
+    width: 40vw;
+    height: 68vh;
+}
+#foto_baleia img{
+    width: 40vw;
+    height: 80vh;
+
+}
+#botao_cadastro{
+    width: 10vw;
+    height: 5vh;
+    border: none;
+    font-family: montserrat;
+    color: #003366;
+    font-weight: 600;
+    margin-top: 40px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.corpo_orca{
+    margin-top: 20vh;
+    background-color: #F5F4F9;
+    width: 80vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+#orca img{
+    padding-top: 10vh;
+    width: 60vw;
+}
+#texto_orca{
+    display: flex;
+    justify-content: flex-start;
+}
