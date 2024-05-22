@@ -328,7 +328,7 @@
       finalizarAguardar();
       return false;
 
-    }
+    }else{
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -372,7 +372,7 @@
 
     return false;
   }
-
+  }
   function listar() {
     fetch("/empresas/listar", {
       method: "GET",
@@ -409,7 +409,7 @@
         </div>
         <div class="campos_form_cadastro" >
            <div class="titulos_form">CPF: </div>
-           <input type="text" id="form_cadastro_CPF" class="inputs_form_cadastro" placeholder="11 912345678" maxlength="11">
+           <input type="text" id="form_cadastro_CPF" class="inputs_form_cadastro" placeholder="12345678910" maxlength="11">
         </div>
          
        </div>
@@ -435,9 +435,7 @@
        <button id="botao_voltar" onclick="">Voltar</button>
        <button id="form_button" onclick="cadastrar()">Enviar</button>
        </div>
-       <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
+       
 
         <div id="div_erros_login"></div>
      </form>
