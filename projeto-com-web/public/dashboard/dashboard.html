@@ -2,15 +2,20 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/imgs/logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <link rel="shortcut icon" href="./assets\imgs\logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Blue Horizon - Dashboard</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -30,51 +35,87 @@
 
 <body>
 
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
+    <nav>
+        <div class="navbar">
+            <div class="container nav-container">
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <div class="area_icone_tema">
+                    <div class="icone_tema">
+
+                        <button id="trocaCor" onclick="changeColor()"><img src="../assets/imgs/day-night.png"
+                                alt=""></button>
+
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="logo">
+                        <img src="../assets/imgs/logo-semfundo.png">
+                    </div>
+                    <div class="foto-usuario">
+                        <br>
+                        <p>Olá, Usuário!</p>
+                        <img src="../assets/imgs/mulher.png">
+                        <p>Bem vindo(a) ao Blue Horizon!</p>
+
+                    </div>
+                    <br>
+                    <li><img class="navIcon" src="../assets/imgs/icon.png"><a href="#">Editar Perfil</a></li>
+                    <li><img class="navIcon" src="../assets/imgs/pergunta.png"><a href="#">Quiz</a></li>
+                    <li><img class="navIcon" src="../assets/imgs/palavras-cruzadas.png"><a href="#">Palavras
+                            Cruzadas</a></li>
+                    <li><img class="navIcon" src="../assets/imgs/sair.png"><a href="#">Sair</a></li>
+                </div>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
+    </nav>
+    <div class="corpo" id="corpo">
+        <div id="grid_corpo">
+            <div id="corpo_kpi">
+            <div id="kpi1">
+                <div id="titulo_kpi">Tempo Restante</div>
+                <div id="info_kpi">34 seg</div>
+            </div>
+            <div id="kpi2">
+                <div id="titulo_kpi">Perguntas Restantes</div>
+                <div id="info_kpi">9</div>
+            </div>
+            <div id="kpi3">
+                <div id="titulo_kpi">Perguntas Totais</div>
+                <div id="info_kpi">10</div>
+            </div>
+            <div id="kpi4">
+                <div id="titulo_kpi">Tentativas Realizadas</div>
+                <div id="info_kpi">4</div>
+            </div>
+        </div>
+            <div class="corpo_perguntas">
+                <div id="conjunto">
+                    <div id="perguntas">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto laborum id exercitationem amet dolores cupiditate delectus necessitatibus incidunt debitis facilis beatae, suscipit, in, rem possimus. Rem blanditiis natus laudantium id?
+                    </div>
+                    <div id="respostas">
+                        <div>
+                        <button class="botoes_respostas" id="botaoA">A</button>
+                        <button class="botoes_respostas" id="botaoB">B</button>
+                    </div><div>
+                        <button class="botoes_respostas" id="botaoC">C</button>
+                        <button class="botoes_respostas" id="botaoD">D</button>
+                    </div>  
+                    </div>
+                </div>
+                <div class="foto_perguntas"> <img src="../assets/imgs/orca.jpg" alt=""></div>
+            </div>
+            
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
+
+
+
+
+
+
         </div>
     </div>
-
-
 </body>
 
 </html>

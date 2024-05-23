@@ -601,16 +601,7 @@ footer {
 #modal_entrar:hover{
     background-color: #85c7f4;
 }
-#botao_cancelar{
-    color: #003366;
-    border: none;
-    cursor: pointer;
-    margin-left: 36vw;
-    font-size: 40px;
 
-    margin-bottom: 10vh;
-    position: absolute;
-}
 .esqueceu{
     font-size: 16px;
     margin-left: 10.5vw;
@@ -724,4 +715,38 @@ footer {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+button{
+    width: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    color: white;
+    border: 3px solid #657df6;
+    cursor: pointer;
+    background: transparent;
+    background-image: url('https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871');
+    background-repeat: repeat-x;
+    background-position: 0 -100%;
+    background-color: #418FDE;
+    transition: 3s ease;
+  }
+  
+  button:hover{
+    background-position: center;
+  }
+  
+  button:nth-child(1){
+    filter: hue-rotate(0deg);
+  }
+  .botao-cancelar{
+    background:none;
+    color: #003366;
+    border: none;
+    cursor: pointer;
+    margin-left: 36vw;
+    font-size: 40px;
+
+    transform: translateY(-650%);
+    position: relative;
 }
