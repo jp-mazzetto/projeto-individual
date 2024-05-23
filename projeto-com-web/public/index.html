@@ -245,7 +245,7 @@
   
         <div class="contato">
   
-          <a href="usuario.html" style="font-size: 24px; color: #003366;">www.bluehorizon.com.br</a>
+          <a href="teste.html" style="font-size: 24px; color: #003366;">www.bluehorizon.com.br</a>
           <p style="font-size: 20px; color: #003366;">(11) 2536-6498</p>
           <p style="font-size: 16px; color:#d0ad00;">© 2024 by BlueHorizon</p>
   
@@ -276,9 +276,9 @@
     aguardar();
 
     var nomeVar = form_cadastro_nome.value;
+    var cpf = form_cadastro_CPF.value;
     var emailVar = form_cadastro_email.value;
     var senhaVar = form_senha.value;
-    var cpf = form_cadastro_CPF.value;
     var confirmacaoSenhaVar = form_confirmacao_senha.value;
   
 
@@ -340,10 +340,9 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
+        cpfServer: cpf,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar,
-        cpfServer: cpf
+        senhaServer: senhaVar
       }),
     })
       .then(function (resposta) {
