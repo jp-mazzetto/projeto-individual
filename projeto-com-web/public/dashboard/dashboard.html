@@ -71,19 +71,19 @@
             <div id="corpo_kpi">
             <div id="kpi1">
                 <div id="titulo_kpi">Tempo Restante</div>
-                <div id="info_kpi">34 seg</div>
+                <div id="countdown" class="info_kpi"></div>
             </div>
             <div id="kpi2">
                 <div id="titulo_kpi">Perguntas Restantes</div>
-                <div id="info_kpi">9</div>
+                <div class="info_kpi">9</div>
             </div>
             <div id="kpi3">
                 <div id="titulo_kpi">Perguntas Totais</div>
-                <div id="info_kpi">10</div>
+                <div class="info_kpi">10</div>
             </div>
             <div id="kpi4">
                 <div id="titulo_kpi">Tentativas Realizadas</div>
-                <div id="info_kpi">4</div>
+                <div class="info_kpi">4</div>
             </div>
         </div>
             <div class="corpo_perguntas">
@@ -110,9 +110,9 @@
                     <div id="respostas">
                         <div>
                         <button class="botoes_respostas" id="botaoA" onclick="enviarResposta('a')">A</button>
-                        <button class="botoes_respostas" id="botaoB" onclick="enviarResposta('b')">B</button>
-                    </div><div>
                         <button class="botoes_respostas" id="botaoC" onclick="enviarResposta('c')">C</button>
+                    </div><div>
+                        <button class="botoes_respostas" id="botaoB" onclick="enviarResposta('b')">B</button>
                         <button class="botoes_respostas" id="botaoD" onclick="enviarResposta('d')">D</button>
                     </div>  
                     </div>
@@ -127,31 +127,110 @@
 
 <script>
 
+// Selecionando o elemento do countdown
+const countdownElement = document.getElementById('countdown');
+
+// Definindo a quantidade de segundos
+let seconds = 60;
+
+// Função para atualizar o countdown a cada segundo
+function updateCountdown() {
+  // Verificando se ainda restam segundos
+  if (seconds > 0) {
+    countdownElement.textContent = seconds + ' seg';
+    seconds--;
+    setTimeout(updateCountdown, 1000); // Chamando a função novamente após 1 segundo
+  } else {
+    countdownElement.textContent = 'Tempo esgotado'; // Mensagem quando o tempo acabar
+  }
+}
+
+// Chamando a função pela primeira vez
+updateCountdown();
+
 const dadosQuiz = [
-    {
-        pergunta: "Qual é o maior oceano do mundo?",
-        a: "Oceano Atlântico",
-        b: "Oceano Índico",
-        c: "Oceano Ártico",
-        d: "Oceano Pacífico",
-        correta: "d"
-    },
-    {
-        pergunta: "Quantos por cento da superfície da Terra são cobertos por oceanos?",
-        a: "50%",
-        b: "60%",
-        c: "70%",
-        d: "80%",
-        correta: "c"
-    },
-    {
-        pergunta: "Qual é a maior barreira de corais do mundo?",
-        a: "Grande Barreira de Corais",
-        b: "Barreira de Corais de Belize",
-        c: "Barreira de Corais do Havaí",
-        d: "Barreira de Corais do Mar Vermelho",
-        correta: "a"
-    },
+{
+    pergunta: "Qual é o objetivo principal do Objetivo de Desenvolvimento Sustentável 14 da ONU?",
+    a: "Proteger a vida marinha",
+    b: "Erradicar a pobreza",
+    c: "Promover a igualdade de gênero",
+    d: "Aumentar o uso de energias renováveis",
+    correta: "a"
+},
+{
+    pergunta: "Qual desses animais é conhecido por sua capacidade de mudar de cor para se camuflar?",
+    a: "Peixe-palhaço",
+    b: "Tubarão-martelo",
+    c: "Polvo",
+    d: "Baleia-jubarte",
+    correta: "c"
+},
+{
+    pergunta: "Qual é a função principal dos recifes de coral no ecossistema marinho?",
+    a: "Produzir petróleo",
+    b: "Ajudar na navegação dos barcos",
+    c: "Proteger as costas contra a erosão",
+    d: "Aumentar a salinidade da água",
+    correta: "c"
+},
+{
+    pergunta: "Qual é o maior animal marinho?",
+    a: "Tubarão-branco",
+    b: "Golfinho",
+    c: "Orca",
+    d: "Baleia-azul",
+    correta: "d"
+},
+{
+    pergunta: "Qual destes animais marinhos é conhecido por sua inteligência e capacidade de usar ferramentas?",
+    a: "Camarão",
+    b: "Golfinho",
+    c: "Estrela-do-mar",
+    d: "Sardinha",
+    correta: "b"
+},
+{
+    pergunta: "Qual é o principal problema causado pelo plástico nos oceanos?",
+    a: "Aumenta a temperatura da água",
+    b: "Diminui o nível do mar",
+    c: "Prejudica a vida marinha",
+    d: "Aumenta a salinidade da água",
+    correta: "c"
+},
+{
+    pergunta: "Qual destes é um efeito da acidificação dos oceanos?",
+    a: "Aumento da biodiversidade",
+    b: "Diminuição das populações de peixes",
+    c: "Fortalecimento dos recifes de coral",
+    d: "Redução do nível do mar",
+    correta: "b"
+},
+{
+    pergunta: "Qual é a principal causa da morte das tartarugas marinhas?",
+    a: "Poluição por plásticos",
+    b: "Ataques de tubarões",
+    c: "Mudanças na temperatura da água",
+    d: "Falta de comida",
+    correta: "a"
+},
+{
+    pergunta: "Qual desses animais marinhos é famoso por sua capacidade de 'voar' fora da água?",
+    a: "Peixe-voador",
+    b: "Golfinho",
+    c: "Baleia-cinzenta",
+    d: "Polvo",
+    correta: "a"
+},
+{
+    pergunta: "O que é o fenômeno de branqueamento dos corais?",
+    a: "Quando os corais mudam de cor para se reproduzir",
+    b: "Quando os corais perdem suas cores devido ao estresse ambiental",
+    c: "Quando os corais crescem mais rápido",
+    d: "Quando os corais são cobertos por areia branca",
+    correta: "b"
+}
+
+
     // Adicione mais perguntas conforme necessário
 ];
 

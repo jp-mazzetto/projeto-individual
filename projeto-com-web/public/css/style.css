@@ -382,7 +382,7 @@ a {
     box-sizing: border-box;
 }
 
-#form_button {
+.form_button {
     display: flex;
     background-color: #418FDE;
     color: #003366;
@@ -666,6 +666,7 @@ footer {
 }
 .modal_formulario{
     margin-right: 8vw;
+    display: none;
 }
 .formulario_cadastro{
     display: flex;
@@ -747,6 +748,6 @@ button{
     margin-left: 36vw;
     font-size: 40px;
 
-    transform: translateY(-650%);
-    position: relative;
+    transform: translateY(-110%);
+    position: absolute;
 }

@@ -168,7 +168,7 @@
           
         </div>
         
-        <button id="form_button" onclick="enviarMensagem()">Enviar</button>
+        <button class="form_button" onclick="enviarMensagem()">Enviar</button>
       </form>
     </div>
 
@@ -208,15 +208,64 @@
                 
             </div>
             <div class="botao_e_esqueceu">
-                <button id="modal_entrar" type="button" onclick="">Entrar</button>
+                <button id="modal_entrar" type="button" onclick="entrar()">Entrar</button>
                 
                 <a href="" class="esqueceu">Esqueceu sua senha?</a>
             </div>
+        </div>
+        <div class="modal_formulario" id="modal_formulario">
+     
+          <p style="display: flex;"><span style="color: #003366; font-size: 44px; font-weight: 500;">Cadastro</span></p> 
+          <br><br>
+          <form>
+            <div class="form_grupo">
+              <div class="campos_form_cadastro" >
+                <div  class="titulos_form">Nome Completo: </div>
+              <input type="text" id="form_cadastro_nome" class="inputs_form_cadastro" placeholder="Insira seu nome aqui" >
+              <div id="mensagem_erro"></div>
+             </div>
+             <div class="campos_form_cadastro" >
+                <div class="titulos_form">CPF: </div>
+                <input type="text" id="form_cadastro_CPF" class="inputs_form_cadastro" placeholder="12345678910" maxlength="11">
+                <div id="mensagem_erro"></div>
+             </div>
+              
+            </div>
+            <div class="form_grupo">
+              <div class="campos_form_cadastro" >
+                <div  class="titulos_form">Email: </div>
+                <input type="email" id="form_cadastro_email" class="inputs_form_cadastro" placeholder="exemplo@gmail.com" >
+                <div id="mensagem_erro"></div>
+             </div>
+              
+            </div>
+            <div class="form_grupo">
+              <div class="campos_form_cadastro">
+                <div class="titulos_form">Senha: </div>
+                <input id="form_senha" class="inputs_form_cadastro" placeholder="************" >
+                <div id="mensagem_erro"></div>
+             </div>
+             <div class="campos_form_cadastro">
+              <div class="titulos_form">Confirme sua senha: </div>
+              <input id="form_confirmacao_senha" class="inputs_form_cadastro" placeholder="************" >
+              <div id="mensagem_erro"></div>
+           </div>
+              
+            </div>
+            <div class="botoes_cadastro">
+            <button id="botao_voltar" onclick="voltarLogin()" type="button">Voltar</button>
+            <button class="form_button" onclick="cadastrar()">Enviar</button>
+            </div>
+            
+     
+             <div id="div_erros_login"></div>
+          </form>
         </div>
         <button id="botao_cancelar"
         onclick="document.getElementById('div_login').style.display='none'"
         class="botao-cancelar">X</button>
     </div>
+    
     </form>
 </div>
 
@@ -245,7 +294,7 @@
   
         <div class="contato">
   
-          <a href="teste.html" style="font-size: 24px; color: #003366;">www.bluehorizon.com.br</a>
+          <a href="..\public\dashboard\dashboard.html" style="font-size: 24px; color: #003366;">www.bluehorizon.com.br</a>
           <p style="font-size: 20px; color: #003366;">(11) 2536-6498</p>
           <p style="font-size: 16px; color:#d0ad00;">© 2024 by BlueHorizon</p>
   
@@ -290,43 +339,33 @@
 
 
     if (nomeVar.length <= 1 || nomeVar == "") {
-      cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Nome inválido)";
     
-      finalizarAguardar();
-      return false;
+    return false;
     }
     if (emailArroba <= 0 || emailVar == "" || emailPonto <= 0) {
-      cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(email inválido)";
 
-      finalizarAguardar();
-      return false;
+    return false;
 
     }  if (cpf.length != 11 || cpf == "") {
-      cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(cpf inválido)";
 
     
-      finalizarAguardar();
-      return false;
+    return false;
     }
     if (senhaVar.length < 6 || senhaVar == "") {
-      cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(senha inválida)";
 
     
-      finalizarAguardar();
-      return false;
+    return false;
     }
     if (confirmacaoSenhaVar != senhaVar || confirmacaoSenhaVar == "") {
-      cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(confirmação de senha inválida)";
 
 
    
-      finalizarAguardar();
-      return false;
+    return false;
 
     }else{
 
@@ -342,14 +381,15 @@
         nomeServer: nomeVar,
         cpfServer: cpf,
         emailServer: emailVar,
-        senhaServer: senhaVar
+        senhaServer: senhaVar,
+        confirmacaoSenhaServer: confirmacaoSenhaVar
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+         
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -359,88 +399,95 @@
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
-        } else {
+          } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
       });
 
     return false;
   }
   }
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+ 
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
-  
+ 
   function enviarMensagem() {
-    id_form.innerHTML = `<h1 style="color: #003366; font-size: 44px; font-weight: 600;">Mensagem enviada com sucesso!</h1><img src="./assets\imgs\verificado.png" style="width: 20%; margin-left: 38%; margin-top: 2vh"> <button id="form_button" onclick="location.reload()"> Voltar</button>`
+    id_form.innerHTML = `<h1 style="color: #003366; font-size: 44px; font-weight: 600;">Mensagem enviada com sucesso!</h1><img src="./assets\imgs\verificado.png" style="width: 20%; margin-left: 38%; margin-top: 2vh"> <button class="form_button" onclick="location.reload()"> Voltar</button>`
   }
   function modalCadastro(){
-    div_direita.innerHTML = ` <div class="modal_formulario">
-     
-     <p style="display: flex;"><span style="color: #003366; font-size: 44px; font-weight: 500;">Cadastro</span></p> 
-     <br><br>
-     <form>
-       <div class="form_grupo">
-         <div class="campos_form_cadastro" >
-           <div  class="titulos_form">Nome Completo: </div>
-         <input type="text" id="form_cadastro_nome" class="inputs_form_cadastro" placeholder="Insira seu nome aqui" >
-        </div>
-        <div class="campos_form_cadastro" >
-           <div class="titulos_form">CPF: </div>
-           <input type="text" id="form_cadastro_CPF" class="inputs_form_cadastro" placeholder="12345678910" maxlength="11">
-        </div>
-         
-       </div>
-       <div class="form_grupo">
-         <div class="campos_form_cadastro" >
-           <div  class="titulos_form">Email: </div>
-           <input type="email" id="form_cadastro_email" class="inputs_form_cadastro" placeholder="exemplo@gmail.com" >
-        </div>
-         
-       </div>
-       <div class="form_grupo">
-         <div class="campos_form_cadastro">
-           <div class="titulos_form">Senha: </div>
-           <input id="form_senha" class="inputs_form_cadastro" placeholder="************" >
-        </div>
-        <div class="campos_form_cadastro">
-         <div class="titulos_form">Confirme sua senha: </div>
-         <input id="form_confirmacao_senha" class="inputs_form_cadastro" placeholder="************" >
-      </div>
-         
-       </div>
-       <div class="botoes_cadastro">
-       <button id="botao_voltar" onclick="">Voltar</button>
-       <button id="form_button" onclick="cadastrar()">Enviar</button>
-       </div>
-       
-
-        <div id="div_erros_login"></div>
-     </form>
-   </div>
- `
+   modal_formulario.style.display ="block"
+   div_direita.style.display="none"
   }
+  function voltarLogin(){
+   modal_formulario.style.display ="none"
+   div_direita.style.display="block"
+   div_login.style.display='block'
+  }
+  function entrar() {
+        
+
+        var emailVar = modal_email.value;
+        var senhaVar = modal_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+          
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+                return false;
+        }
+        
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                  
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+   
  
 
 </script>
