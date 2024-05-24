@@ -31,8 +31,6 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
 
     <nav>
@@ -90,30 +88,37 @@
         </div>
             <div class="corpo_perguntas">
                 <div id="conjunto">
+                    
                     <div id="perguntas">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto laborum id exercitationem amet dolores cupiditate delectus necessitatibus incidunt debitis facilis beatae, suscipit, in, rem possimus. Rem blanditiis natus laudantium id?
+                        <div class="quiz-container">
+                            <div id="quiz">
+                                <div class="quiz-header">
+                                    
+                                    <h2>Quiz Blue Horizon</h2>
+                                </div>
+                                <div class="pergunta-container">
+                                    <div class="pergunta">Texto da pergunta</div>
+                                    <ul class="respostas">
+                                      
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
+                
                     <div id="respostas">
                         <div>
-                        <button class="botoes_respostas" id="botaoA">A</button>
-                        <button class="botoes_respostas" id="botaoB">B</button>
+                        <button class="botoes_respostas" id="botaoA" onclick="enviarResposta('a')">A</button>
+                        <button class="botoes_respostas" id="botaoB" onclick="enviarResposta('b')">B</button>
                     </div><div>
-                        <button class="botoes_respostas" id="botaoC">C</button>
-                        <button class="botoes_respostas" id="botaoD">D</button>
+                        <button class="botoes_respostas" id="botaoC" onclick="enviarResposta('c')">C</button>
+                        <button class="botoes_respostas" id="botaoD" onclick="enviarResposta('d')">D</button>
                     </div>  
                     </div>
                 </div>
                 <div class="foto_perguntas"> <img src="../assets/imgs/orca.jpg" alt=""></div>
             </div>
-            
-
-
-
-
-
-
-
-
         </div>
     </div>
 </body>
@@ -121,6 +126,77 @@
 </html>
 
 <script>
+
+const dadosQuiz = [
+    {
+        pergunta: "Qual é o maior oceano do mundo?",
+        a: "Oceano Atlântico",
+        b: "Oceano Índico",
+        c: "Oceano Ártico",
+        d: "Oceano Pacífico",
+        correta: "d"
+    },
+    {
+        pergunta: "Quantos por cento da superfície da Terra são cobertos por oceanos?",
+        a: "50%",
+        b: "60%",
+        c: "70%",
+        d: "80%",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é a maior barreira de corais do mundo?",
+        a: "Grande Barreira de Corais",
+        b: "Barreira de Corais de Belize",
+        c: "Barreira de Corais do Havaí",
+        d: "Barreira de Corais do Mar Vermelho",
+        correta: "a"
+    },
+    // Adicione mais perguntas conforme necessário
+];
+
+let perguntaAtual = 0;
+let pontuacao = 0;
+
+const quizContainer = document.getElementById('quiz');
+const perguntaElemento = document.querySelector('.pergunta');
+const respostasContainer = document.querySelector('.respostas');
+const resultadoContainer = document.getElementById('resultado');
+const pontuacaoElemento = document.getElementById('pontuacao');
+
+function carregarQuiz() {
+    const quizAtual = dadosQuiz[perguntaAtual];
+    perguntaElemento.innerText = quizAtual.pergunta;
+    respostasContainer.innerHTML =
+    `A: ${quizAtual.a}<br>
+    B: ${quizAtual.b}<br>
+    C: ${quizAtual.c}<br>
+    D: ${quizAtual.d}<br>
+    `;
+}
+
+function enviarResposta(respostaSelecionada) {
+    if (respostaSelecionada == dadosQuiz[perguntaAtual].correta) {
+        pontuacao++;
+    }
+
+    perguntaAtual++;
+
+    if (perguntaAtual < dadosQuiz.length) {
+        carregarQuiz();
+    } else {
+        quizContainer.innerHTML = `
+            <h2>Sua pontuação: ${pontuacao}/${dadosQuiz.length}</h2>
+            <button onclick="location.reload()">Recarregar</button>
+        `;
+    }
+}
+
+// Carregar a primeira pergunta quando a página for carregada
+carregarQuiz();
+
+
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
