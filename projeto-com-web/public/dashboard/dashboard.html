@@ -69,52 +69,79 @@
     <div class="corpo" id="corpo">
         <div id="grid_corpo">
             <div id="corpo_kpi">
-            <div id="kpi1">
-                <div id="titulo_kpi">Tempo Restante</div>
-                <div id="countdown" class="info_kpi"></div>
+                <div id="kpi1">
+                    <div id="titulo_kpi">Tempo Restante</div>
+                    <div id="countdown" class="info_kpi" style="display: none;"></div>
+                </div>
+                <div id="kpi2">
+                    <div id="titulo_kpi">Pergunta Atual</div>
+                    <div id="qualPerguntaEsta" class="info_kpi" style="display: none;">0</div>
+                </div>
+                <div id="kpi3">
+                    <div id="titulo_kpi">Perguntas Totais</div>
+                    <div class="info_kpi">10</div>
+                </div>
+                <div id="kpi4">
+                    <div id="titulo_kpi">Tentativas Realizadas</div>
+                    <div class="info_kpi">4</div>
+                </div>
             </div>
-            <div id="kpi2">
-                <div id="titulo_kpi">Perguntas Restantes</div>
-                <div class="info_kpi">9</div>
+            <div class="modal_encerrado" id="modal_encerramento">
+                <form class="modal-content animate">
+                    <h1>Tempo esgotado! :(</h1>
+                    <h2>Deseja tentar mais uma vez?</h2>
+                    <button class="botoes_encerrado" id="botao_recomecar" onclick="recomecar()">Recomeçar</button> <button class="botoes_encerrado">Voltar</button>
+                </form>
+
+
             </div>
-            <div id="kpi3">
-                <div id="titulo_kpi">Perguntas Totais</div>
-                <div class="info_kpi">10</div>
+            <div class="div_modal_regras" id="id_modal_regras">
+                <div class="modal_regras animate" id="modal_regras">
+                    
+                    <h1 style="text-decoration: underline; display: flex; justify-content: center;">Regras</h1>
+                    <h2><li>Você terá 45 segundos por pergunta </li></h2>
+                    <h2><li>Cada uma das 10 perguntas terá 4 alternativas, mas só 1 resposta correta</li></h2>
+                    <h2><li>Caso acabe o tempo, você precisará reiniciar o quiz </li></h2>
+                    <h2><li>Sua pontuação aparecerá ao final do quiz </li></h2>
+                    <h2 style="margin-left: 19.5vw; text-decoration: underline;";>Boa Sorte!</h2>
+                    <div class="corpo_botoes_regras">
+                     <button class="botoes_encerrado" onclick="voltar()">Voltar</button>
+                </div>
+                </div>
+
             </div>
-            <div id="kpi4">
-                <div id="titulo_kpi">Tentativas Realizadas</div>
-                <div class="info_kpi">4</div>
-            </div>
-        </div>
             <div class="corpo_perguntas">
                 <div id="conjunto">
-                    
                     <div id="perguntas">
+                        <div id="telaInicial">
+                            <h2>Bem-vindo(a) ao Quiz Blue Horizon</h2>
+                            <button id="comecarQuiz" onclick="updateCountdown()">Começar</button>
+                            <button id="regras" onclick="regras()">Regras</button>
+                        </div>
+                        
                         <div class="quiz-container">
                             <div id="quiz">
-                                <div class="quiz-header">
-                                    
-                                    <h2>Quiz Blue Horizon</h2>
-                                </div>
+
                                 <div class="pergunta-container">
-                                    <div class="pergunta">Texto da pergunta</div>
+                                    <div class="pergunta" id="div_perguntas"></div>
                                     <ul class="respostas">
-                                      
+
                                     </ul>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
-                
+
                     <div id="respostas">
                         <div>
-                        <button class="botoes_respostas" id="botaoA" onclick="enviarResposta('a')">A</button>
-                        <button class="botoes_respostas" id="botaoC" onclick="enviarResposta('c')">C</button>
-                    </div><div>
-                        <button class="botoes_respostas" id="botaoB" onclick="enviarResposta('b')">B</button>
-                        <button class="botoes_respostas" id="botaoD" onclick="enviarResposta('d')">D</button>
-                    </div>  
+                            <button class="botoes_respostas" id="botaoA" onclick="enviarResposta('a')">A</button>
+                            <button class="botoes_respostas" id="botaoC" onclick="enviarResposta('c')">C</button>
+                        </div>
+                        <div>
+                            <button class="botoes_respostas" id="botaoB" onclick="enviarResposta('b')">B</button>
+                            <button class="botoes_respostas" id="botaoD" onclick="enviarResposta('d')">D</button>
+                        </div>
                     </div>
                 </div>
                 <div class="foto_perguntas"> <img src="../assets/imgs/orca.jpg" alt=""></div>
@@ -127,152 +154,172 @@
 
 <script>
 
-// Selecionando o elemento do countdown
-const countdownElement = document.getElementById('countdown');
+    // Selecionando o elemento do countdown
+    const countdownElement = document.getElementById('countdown');
 
-// Definindo a quantidade de segundos
-let seconds = 60;
+    // Definindo a quantidade de segundos
+    let seconds = 45;
 
-// Função para atualizar o countdown a cada segundo
-function updateCountdown() {
-  // Verificando se ainda restam segundos
-  if (seconds > 0) {
-    countdownElement.textContent = seconds + ' seg';
-    seconds--;
-    setTimeout(updateCountdown, 1000); // Chamando a função novamente após 1 segundo
-  } else {
-    countdownElement.textContent = 'Tempo esgotado'; // Mensagem quando o tempo acabar
-  }
-}
-
-// Chamando a função pela primeira vez
-updateCountdown();
-
-const dadosQuiz = [
-{
-    pergunta: "Qual é o objetivo principal do Objetivo de Desenvolvimento Sustentável 14 da ONU?",
-    a: "Proteger a vida marinha",
-    b: "Erradicar a pobreza",
-    c: "Promover a igualdade de gênero",
-    d: "Aumentar o uso de energias renováveis",
-    correta: "a"
-},
-{
-    pergunta: "Qual desses animais é conhecido por sua capacidade de mudar de cor para se camuflar?",
-    a: "Peixe-palhaço",
-    b: "Tubarão-martelo",
-    c: "Polvo",
-    d: "Baleia-jubarte",
-    correta: "c"
-},
-{
-    pergunta: "Qual é a função principal dos recifes de coral no ecossistema marinho?",
-    a: "Produzir petróleo",
-    b: "Ajudar na navegação dos barcos",
-    c: "Proteger as costas contra a erosão",
-    d: "Aumentar a salinidade da água",
-    correta: "c"
-},
-{
-    pergunta: "Qual é o maior animal marinho?",
-    a: "Tubarão-branco",
-    b: "Golfinho",
-    c: "Orca",
-    d: "Baleia-azul",
-    correta: "d"
-},
-{
-    pergunta: "Qual destes animais marinhos é conhecido por sua inteligência e capacidade de usar ferramentas?",
-    a: "Camarão",
-    b: "Golfinho",
-    c: "Estrela-do-mar",
-    d: "Sardinha",
-    correta: "b"
-},
-{
-    pergunta: "Qual é o principal problema causado pelo plástico nos oceanos?",
-    a: "Aumenta a temperatura da água",
-    b: "Diminui o nível do mar",
-    c: "Prejudica a vida marinha",
-    d: "Aumenta a salinidade da água",
-    correta: "c"
-},
-{
-    pergunta: "Qual destes é um efeito da acidificação dos oceanos?",
-    a: "Aumento da biodiversidade",
-    b: "Diminuição das populações de peixes",
-    c: "Fortalecimento dos recifes de coral",
-    d: "Redução do nível do mar",
-    correta: "b"
-},
-{
-    pergunta: "Qual é a principal causa da morte das tartarugas marinhas?",
-    a: "Poluição por plásticos",
-    b: "Ataques de tubarões",
-    c: "Mudanças na temperatura da água",
-    d: "Falta de comida",
-    correta: "a"
-},
-{
-    pergunta: "Qual desses animais marinhos é famoso por sua capacidade de 'voar' fora da água?",
-    a: "Peixe-voador",
-    b: "Golfinho",
-    c: "Baleia-cinzenta",
-    d: "Polvo",
-    correta: "a"
-},
-{
-    pergunta: "O que é o fenômeno de branqueamento dos corais?",
-    a: "Quando os corais mudam de cor para se reproduzir",
-    b: "Quando os corais perdem suas cores devido ao estresse ambiental",
-    c: "Quando os corais crescem mais rápido",
-    d: "Quando os corais são cobertos por areia branca",
-    correta: "b"
-}
-
-
-    // Adicione mais perguntas conforme necessário
-];
-
-let perguntaAtual = 0;
-let pontuacao = 0;
-
-const quizContainer = document.getElementById('quiz');
-const perguntaElemento = document.querySelector('.pergunta');
-const respostasContainer = document.querySelector('.respostas');
-const resultadoContainer = document.getElementById('resultado');
-const pontuacaoElemento = document.getElementById('pontuacao');
-
-function carregarQuiz() {
-    const quizAtual = dadosQuiz[perguntaAtual];
-    perguntaElemento.innerText = quizAtual.pergunta;
-    respostasContainer.innerHTML =
-    `A: ${quizAtual.a}<br>
-    B: ${quizAtual.b}<br>
-    C: ${quizAtual.c}<br>
-    D: ${quizAtual.d}<br>
-    `;
-}
-
-function enviarResposta(respostaSelecionada) {
-    if (respostaSelecionada == dadosQuiz[perguntaAtual].correta) {
-        pontuacao++;
+    // Função para atualizar o countdown a cada segundo
+    function updateCountdown() {
+        
+        document.getElementById('countdown').style.display = 'block';
+        // Verificando se ainda restam segundos
+        if (seconds > 0) {
+            countdownElement.textContent = seconds + ' seg';
+            seconds--;
+            setTimeout(updateCountdown, 1000); // Chamando a função novamente após 1 segundo
+        } else {
+            countdownElement.textContent = 'Tempo esgotado'; // Mensagem quando o tempo acabar
+            document.getElementById('modal_encerramento').style.display="block"
+        }
     }
-
-    perguntaAtual++;
-
-    if (perguntaAtual < dadosQuiz.length) {
+   
+      
+        document.getElementById('botao_recomecar').addEventListener('click', () => {
+        document.getElementById('modal_encerramento').style.display = 'none';
+        document.getElementById('telaInicial').style.display = 'block';
+        document.getElementById('div_perguntas').style.display = 'none'
         carregarQuiz();
-    } else {
-        quizContainer.innerHTML = `
-            <h2>Sua pontuação: ${pontuacao}/${dadosQuiz.length}</h2>
-            <button onclick="location.reload()">Recarregar</button>
-        `;
-    }
-}
+      
+    })
 
-// Carregar a primeira pergunta quando a página for carregada
-carregarQuiz();
+    // Chamando a função pela primeira vez
+
+
+    const dadosQuiz = [
+        {
+            pergunta: "Qual é o objetivo principal do Objetivo de Desenvolvimento Sustentável 14 da ONU?",
+            a: "Proteger a vida marinha",
+            b: "Erradicar a pobreza",
+            c: "Promover a igualdade de gênero",
+            d: "Aumentar o uso de energias renováveis",
+            correta: "a"
+        },
+        {
+            pergunta: "Qual desses animais é conhecido por sua capacidade de mudar de cor para se camuflar?",
+            a: "Peixe-palhaço",
+            b: "Tubarão-martelo",
+            c: "Polvo",
+            d: "Baleia-jubarte",
+            correta: "c"
+        },
+        {
+            pergunta: "Qual é a função principal dos recifes de coral no ecossistema marinho?",
+            a: "Produzir petróleo",
+            b: "Ajudar na navegação dos barcos",
+            c: "Proteger as costas contra a erosão",
+            d: "Aumentar a salinidade da água",
+            correta: "c"
+        },
+        {
+            pergunta: "Qual é o maior animal marinho?",
+            a: "Tubarão-branco",
+            b: "Golfinho",
+            c: "Orca",
+            d: "Baleia-azul",
+            correta: "d"
+        },
+        {
+            pergunta: "Qual destes animais marinhos é conhecido por sua inteligência e capacidade de usar ferramentas?",
+            a: "Camarão",
+            b: "Golfinho",
+            c: "Estrela-do-mar",
+            d: "Sardinha",
+            correta: "b"
+        },
+        {
+            pergunta: "Qual é o principal problema causado pelo plástico nos oceanos?",
+            a: "Aumenta a temperatura da água",
+            b: "Diminui o nível do mar",
+            c: "Prejudica a vida marinha",
+            d: "Aumenta a salinidade da água",
+            correta: "c"
+        },
+        {
+            pergunta: "Qual destes é um efeito da acidificação dos oceanos?",
+            a: "Aumento da biodiversidade",
+            b: "Diminuição das populações de peixes",
+            c: "Fortalecimento dos recifes de coral",
+            d: "Redução do nível do mar",
+            correta: "b"
+        },
+        {
+            pergunta: "Qual é a principal causa da morte das tartarugas marinhas?",
+            a: "Poluição por plásticos",
+            b: "Ataques de tubarões",
+            c: "Mudanças na temperatura da água",
+            d: "Falta de comida",
+            correta: "a"
+        },
+        {
+            pergunta: "Qual desses animais marinhos é famoso por sua capacidade de 'voar' fora da água?",
+            a: "Peixe-voador",
+            b: "Golfinho",
+            c: "Baleia-cinzenta",
+            d: "Polvo",
+            correta: "a"
+        },
+        {
+            pergunta: "O que é o fenômeno de branqueamento dos corais?",
+            a: "Quando os corais mudam de cor para se reproduzir",
+            b: "Quando os corais perdem suas cores devido ao estresse ambiental",
+            c: "Quando os corais crescem mais rápido",
+            d: "Quando os corais são cobertos por areia branca",
+            correta: "b"
+        }
+    ];
+
+    let perguntaAtual = 0;
+    let pontuacao = 0;
+
+    const quizContainer = document.getElementById('quiz');
+    const perguntaElemento = document.querySelector('.pergunta');
+    const respostasContainer = document.querySelector('.respostas');
+ 
+
+    function carregarQuiz() {
+        const quizAtual = dadosQuiz[perguntaAtual];
+        perguntaElemento.innerText = quizAtual.pergunta;
+        respostasContainer.innerHTML =
+            `<br>
+            <b>A:</b> ${quizAtual.a}<br>
+            <b>B:</b> ${quizAtual.b}<br>
+            <b>C:</b> ${quizAtual.c}<br>
+            <b>D:</b> ${quizAtual.d}<br>`;
+    }
+
+    function enviarResposta(respostaSelecionada) {
+        seconds = 45;
+        if (respostaSelecionada == dadosQuiz[perguntaAtual].correta) {
+            pontuacao++;
+        }
+       
+        perguntaAtual++;
+
+        if (perguntaAtual < dadosQuiz.length) {
+            carregarQuiz();
+            
+        } else {
+            document.getElementById('countdown').style.display = 'none';
+            quizContainer.innerHTML = `
+            <h2>Sua pontuação: ${pontuacao}/${dadosQuiz.length}</h2>
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>
+        `;
+        }
+    }
+
+    document.getElementById('comecarQuiz').addEventListener('click', () => {
+        document.getElementById('telaInicial').style.display = 'none';
+        document.querySelector('.corpo_perguntas').style.display = 'flex';
+        carregarQuiz();
+    });
+    function regras(){
+        document.querySelector('.modal_regras').style.display = 'flex';
+}
+function voltar(){
+    document.querySelector('.modal_regras').style.display = 'none';
+}
 
 
 
