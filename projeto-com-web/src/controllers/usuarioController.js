@@ -5,7 +5,7 @@ function autenticar(req, res) {
     var senha = req.body.senhaServer;
 
     if (email == undefined) {
-        res.status(400).send("Seu email está indefinido!");
+        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
@@ -21,28 +21,25 @@ function autenticar(req, res) {
                         res.json({
                             id: resultadoAutenticar[0].id,
                             nome: resultadoAutenticar[0].nome,
-                            cpf: resultadoAutenticar[0].cpf,
+                            // cpf: resultadoAutenticar[0].cpf,
                             email: resultadoAutenticar[0].email,
-                            senha: resultadoAutenticar[0].senha,
-                         
                         });
-
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+                }).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
     }
 
 }
+
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
