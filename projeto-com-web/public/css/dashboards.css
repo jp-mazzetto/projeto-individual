@@ -269,11 +269,16 @@ input::placeholder {
   background-position: 0 -750%;
   background-color: #f9f9f9;
   transition: 0.5s ease;
+
 }
 
-button:hover {
+.botoes_respostas:hover {
   background-position: center;
   color: #f9f9f9;
+  z-index: 2; /* Aumenta o nível de sobreposição no hover */
+  width: 230%;
+  height: 17vh;
+   transition: transform 0.3s ease;
 }
 
 
