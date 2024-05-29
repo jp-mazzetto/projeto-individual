@@ -329,15 +329,15 @@
     var senhaVar = form_senha.value;
     var confirmacaoSenhaVar = form_confirmacao_senha.value;
        
-        // const arroba = emailVar.indexOf('@')
-        // const ponto = emailVar.indexOf('.com')
-        // const exclamacao = senhaVar.indexOf('!')
-        // const arrobs = senhaVar.indexOf('@')
-        // const velha = senhaVar.indexOf('#')
-        // const cifrao = senhaVar.indexOf('$')
-        // const ast = senhaVar.indexOf('*')
-        // const comercial = senhaVar.indexOf('&')
-        // const porcento = senhaVar.indexOf('%')
+        const arroba = emailVar.indexOf('@')
+        const ponto = emailVar.indexOf('.com')
+        const exclamacao = senhaVar.indexOf('!')
+        const arrobaSenha = senhaVar.indexOf('@')
+        const velha = senhaVar.indexOf('#')
+        const cifrao = senhaVar.indexOf('$')
+        const asterisco = senhaVar.indexOf('*')
+        const comercial = senhaVar.indexOf('&')
+        const porcento = senhaVar.indexOf('%')
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",

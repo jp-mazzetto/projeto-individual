@@ -81,8 +81,10 @@ input::placeholder {
 
 /* Define a largura e margem direita do ícone de navegação */
 .navIcon {
-  width: 1.3vw;
+  width: 1.8vw;
   margin-right: 0.7vw;
+ stroke: #003366;
+ 
 }
 
 /* Define a exibição dos itens do menu como flex */
@@ -95,6 +97,7 @@ input::placeholder {
 .navbar .nav-container li {
   list-style: none;
   display: flex;
+  align-items: center;
 
 }
 
@@ -110,7 +113,10 @@ input::placeholder {
 /* Estiliza os links ao passar o mouse sobre eles */
 .navbar .nav-container a:hover {
   font-weight: bolder;
+  text-decoration: underline;
+
 }
+
 
 /* Define a exibição e a posição da classe nav-container */
 .nav-container {
@@ -216,7 +222,11 @@ input::placeholder {
   padding: 5px;
   align-items: center;
   justify-content: center;
+  
 
+}
+#div_perguntas{
+  font-weight: 700;
 }
 
 .foto_perguntas {
@@ -268,17 +278,21 @@ input::placeholder {
   background-repeat: repeat-x;
   background-position: 0 -750%;
   background-color: #f9f9f9;
-  transition: 0.5s ease;
+  transition: 1s ease;
 
 }
 
 .botoes_respostas:hover {
   background-position: center;
   color: #f9f9f9;
-  z-index: 2; /* Aumenta o nível de sobreposição no hover */
-  width: 230%;
-  height: 17vh;
-   transition: transform 0.3s ease;
+  z-index: 1; /* Aumenta o nível de sobreposição no hover */
+ 
+  font-size: 50px;
+  
+}
+
+li{
+  font-weight: 400;
 }
 
 
