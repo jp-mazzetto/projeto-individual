@@ -251,7 +251,7 @@ input::placeholder {
 }
 
 #respostas {
-  display: flex;
+  display: none;
   justify-content: center;
   gap: 8.6vw;
 

@@ -14,7 +14,7 @@
     <title>Blue Horizon - Dashboard</title>
 
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/dashboard.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -104,7 +104,7 @@
                                 <polyline class="a" points="41.14 40.948 41.14 35.845 38.397 39.29 41.778 39.29">
                                 </polyline>
                             </g>
-                        </svg><a href="#">Palavras
+                        </svg><a href="cruzadinha.html">Palavras
                             Cruzadas</a></li>
                     <li><svg class="navIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -228,180 +228,435 @@
 <script>
 
     const numeroQuestao = document.getElementById('numeroQuestao');
-    // Selecionando o elemento do countdown
     const countdownElement = document.getElementById('countdown');
 
-    // Definindo a quantidade de segundos
     const INITIAL_SECONDS = 45;
     let seconds = INITIAL_SECONDS;
     const timerIds = [];
-    // Função para atualizar o countdown a cada segundo
-    function updateCountdown() {
 
+    function updateCountdown() {
+        document.getElementById('respostas').style.display = 'flex';
         document.getElementById('countdown').style.display = 'block';
-        // Verificando se ainda restam segundos
-        if (perguntaAtual >= dadosQuiz.length) {
-            countdownElement.textContent = "-";
+        if (perguntaAtual >= questoesSelecionadas.length) {
+            countdownElement.textContent = "";
+            document.getElementById('respostas').style.display = 'none';
         } else if (seconds > 0) {
             countdownElement.textContent = seconds + ' seg';
             seconds--;
-            const timerId = setTimeout(updateCountdown, 1000); // Chamando a função novamente após 1 segundo
+            const timerId = setTimeout(updateCountdown, 1000);
             timerIds.push(timerId);
         } else {
-            for (
-                let i = 0;
-                i < timerIds.length;
-                i++
-            ) {
+            for (let i = 0; i < timerIds.length; i++) {
                 clearTimeout(timerIds[i]);
             }
-            countdownElement.textContent = 'Tempo esgotado'; // Mensagem quando o tempo acabar
+            countdownElement.textContent = 'Tempo esgotado';
             document.getElementById('modal_encerramento').style.display = "block"
         }
     }
-
 
     document.getElementById('botao_recomecar').addEventListener('click', () => {
         document.getElementById('modal_encerramento').style.display = 'none';
         document.getElementById('telaInicial').style.display = 'block';
         document.getElementById('div_perguntas').style.display = 'none'
         carregarQuiz();
+    });
 
-    })
-
-    // Chamando a função pela primeira vez
-
-
+ 
     const dadosQuiz = [
-        {
-            pergunta: "Qual é o objetivo principal do Objetivo de Desenvolvimento Sustentável 14 da ONU?",
-            a: "Proteger a vida marinha",
-            b: "Erradicar a pobreza",
-            c: "Promover a igualdade de gênero",
-            d: "Aumentar o uso de energias renováveis",
-            correta: "a"
-        },
-        {
-            pergunta: "Qual desses animais é conhecido por sua capacidade de mudar de cor para se camuflar?",
-            a: "Peixe-palhaço",
-            b: "Tubarão-martelo",
-            c: "Polvo",
-            d: "Baleia-jubarte",
-            correta: "c"
-        },
-        {
-            pergunta: "Qual é a função principal dos recifes de coral no ecossistema marinho?",
-            a: "Produzir petróleo",
-            b: "Ajudar na navegação dos barcos",
-            c: "Proteger as costas contra a erosão",
-            d: "Aumentar a salinidade da água",
-            correta: "c"
-        },
-        {
-            pergunta: "Qual é o maior animal marinho?",
-            a: "Tubarão-branco",
-            b: "Golfinho",
-            c: "Orca",
-            d: "Baleia-azul",
-            correta: "d"
-        },
-        {
-            pergunta: "Qual destes animais marinhos é conhecido por sua inteligência e capacidade de usar ferramentas?",
-            a: "Camarão",
-            b: "Golfinho",
-            c: "Estrela-do-mar",
-            d: "Sardinha",
-            correta: "b"
-        },
-        {
-            pergunta: "Qual é o principal problema causado pelo plástico nos oceanos?",
-            a: "Aumenta a temperatura da água",
-            b: "Diminui o nível do mar",
-            c: "Prejudica a vida marinha",
-            d: "Aumenta a salinidade da água",
-            correta: "c"
-        },
-        {
-            pergunta: "Qual destes é um efeito da acidificação dos oceanos?",
-            a: "Aumento da biodiversidade",
-            b: "Diminuição das populações de peixes",
-            c: "Fortalecimento dos recifes de coral",
-            d: "Redução do nível do mar",
-            correta: "b"
-        },
-        {
-            pergunta: "Qual é a principal causa da morte das tartarugas marinhas?",
-            a: "Poluição por plásticos",
-            b: "Ataques de tubarões",
-            c: "Mudanças na temperatura da água",
-            d: "Falta de comida",
-            correta: "a"
-        },
-        {
-            pergunta: "Qual desses animais marinhos é famoso por sua capacidade de 'voar' fora da água?",
-            a: "Peixe-voador",
-            b: "Golfinho",
-            c: "Baleia-cinzenta",
-            d: "Polvo",
-            correta: "a"
-        },
-        {
-            pergunta: "O que é o fenômeno de branqueamento dos corais?",
-            a: "Quando os corais mudam de cor para se reproduzir",
-            b: "Quando os corais perdem suas cores devido ao estresse ambiental",
-            c: "Quando os corais crescem mais rápido",
-            d: "Quando os corais são cobertos por areia branca",
-            correta: "b"
+    {
+        pergunta: "Qual é a função dos manguezais no ecossistema marinho?",
+        a: "Produzir petróleo",
+        b: "Filtrar sedimentos e poluentes",
+        c: "Aumentar a salinidade da água",
+        d: "Reduzir a biodiversidade",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual desses animais marinhos é conhecido por suas longas migrações?",
+        a: "Peixe-palhaço",
+        b: "Baleia-cinzenta",
+        c: "Tubarão-martelo",
+        d: "Camarão",
+        correta: "b"
+    },
+    {
+        pergunta: "O que é a maré vermelha?",
+        a: "Uma cor diferente do oceano durante o nascer do sol",
+        b: "A presença de algas tóxicas que coloram a água de vermelho",
+        c: "Um fenômeno causado por derramamento de petróleo",
+        d: "Uma técnica de pesca",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal causa da elevação do nível do mar?",
+        a: "Poluição plástica",
+        b: "Derretimento das calotas polares",
+        c: "Aumento da pesca",
+        d: "Desmatamento",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes é um habitat típico dos peixes-boi?",
+        a: "Oceano aberto",
+        b: "Manguezais e rios",
+        c: "Recifes de coral",
+        d: "Águas profundas",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal ameaça aos recifes de coral?",
+        a: "Pesca sustentável",
+        b: "Mudança climática",
+        c: "Exploração de petróleo",
+        d: "Redução da biodiversidade",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é um crustáceo?",
+        a: "Estrela-do-mar",
+        b: "Camarão",
+        c: "Baleia-jubarte",
+        d: "Tubarão-branco",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é o principal uso do fitoplâncton nos oceanos?",
+        a: "Produzir energia eólica",
+        b: "Ser a base da cadeia alimentar marinha",
+        c: "Aumentar a temperatura da água",
+        d: "Proteger contra predadores",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal função das barbatanas das baleias?",
+        a: "Navegação e direção",
+        b: "Respiração",
+        c: "Procriação",
+        d: "Caça",
+        correta: "a"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é um molusco?",
+        a: "Camarão",
+        b: "Polvo",
+        c: "Baleia",
+        d: "Golfinho",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal característica das águas-vivas?",
+        a: "Ter esqueleto ósseo",
+        b: "Capacidade de regeneração rápida",
+        c: "Propriedades bioluminescentes",
+        d: "Ser um mamífero marinho",
+        correta: "c"
+    },
+    {
+        pergunta: "O que é a sobrepesca?",
+        a: "Pesca realizada em águas internacionais",
+        b: "Pesca acima dos níveis sustentáveis",
+        c: "Pesca com redes de arrasto",
+        d: "Pesca de espécies invasoras",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por formar colônias flutuantes?",
+        a: "Peixe-voador",
+        b: "Baleia-cinzenta",
+        c: "Caravela-portuguesa",
+        d: "Golfinho",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é o impacto do aquecimento global nos oceanos?",
+        a: "Aumento da biodiversidade",
+        b: "Elevação da temperatura da água",
+        c: "Redução da poluição",
+        d: "Aumento da produção de petróleo",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal ameaça à sobrevivência dos pinguins?",
+        a: "Caça predatória",
+        b: "Mudanças climáticas e perda de habitat",
+        c: "Aumento da salinidade da água",
+        d: "Proliferação de algas tóxicas",
+        correta: "b"
+    },
+    {
+        pergunta: "O que são os microplásticos?",
+        a: "Pequenos pedaços de plástico que poluem os oceanos",
+        b: "Formas microscópicas de vida marinha",
+        c: "Minúsculas partículas de areia",
+        d: "Algas que produzem oxigênio",
+        correta: "a"
+    },
+    {
+        pergunta: "Qual é a função dos golfinhos na cadeia alimentar marinha?",
+        a: "Produtores",
+        b: "Consumidores primários",
+        c: "Consumidores secundários",
+        d: "Decompositores",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é a principal fonte de poluição dos oceanos?",
+        a: "Resíduos industriais",
+        b: "Descarte de plásticos",
+        c: "Derramamento de petróleo",
+        d: "Excesso de pesca",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por sua habilidade de comunicação vocal complexa?",
+        a: "Camarão",
+        b: "Tubarão-branco",
+        c: "Baleia-jubarte",
+        d: "Estrela-do-mar",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é a principal razão para a criação de áreas marinhas protegidas?",
+        a: "Aumentar a pesca comercial",
+        b: "Preservar a biodiversidade marinha",
+        c: "Reduzir a temperatura da água",
+        d: "Promover o turismo",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes peixes é famoso por viver em simbiose com as anêmonas-do-mar?",
+        a: "Tubarão-martelo",
+        b: "Peixe-palhaço",
+        c: "Baleia-azul",
+        d: "Polvo",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é o efeito do excesso de nutrientes nos oceanos?",
+        a: "Aumento da biodiversidade",
+        b: "Proliferação de algas nocivas",
+        c: "Redução da temperatura da água",
+        d: "Fortalecimento dos recifes de coral",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é o maior desafio para a conservação das tartarugas marinhas?",
+        a: "Aumento da salinidade da água",
+        b: "Predação natural",
+        c: "Destruição de habitats de nidificação",
+        d: "Falta de alimento",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é um predador de topo?",
+        a: "Sardinha",
+        b: "Peixe-palhaço",
+        c: "Tubarão-branco",
+        d: "Camarão",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é o papel das plantas marinhas, como a grama marinha, nos ecossistemas marinhos?",
+        a: "Aumentar a poluição",
+        b: "Fornecer abrigo e alimento para diversas espécies",
+        c: "Reduzir a biodiversidade",
+        d: "Produzir petróleo",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal causa da poluição por mercúrio nos oceanos?",
+        a: "Erupções vulcânicas",
+        b: "Descarte de baterias",
+        c: "Queima de carvão",
+        d: "Resíduos agrícolas",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é a principal função das conchas dos moluscos marinhos?",
+        a: "Navegação",
+        b: "Proteção contra predadores",
+        c: "Respiração",
+        d: "Reprodução",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por sua capacidade de regenerar partes do corpo?",
+        a: "Estrela-do-mar",
+        b: "Baleia-azul",
+        c: "Tubarão-martelo",
+        d: "Golfinho",
+        correta: "a"
+    },
+    {
+        pergunta: "Qual é a principal característica das águas abissais?",
+        a: "Altos níveis de luz solar",
+        b: "Baixa pressão",
+        c: "Altas temperaturas",
+        d: "Escuridão total e alta pressão",
+        correta: "d"
+    },
+    {
+        pergunta: "Qual é a importância dos estuários para a vida marinha?",
+        a: "Fornecem áreas de pesca intensiva",
+        b: "Servem como locais de reprodução e abrigo para muitas espécies",
+        c: "Aumentam a salinidade da água",
+        d: "São ricos em petróleo",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes fatores contribui para o branqueamento dos corais?",
+        a: "Aumento da pesca",
+        b: "Aquecimento das águas oceânicas",
+        c: "Redução da salinidade",
+        d: "Aumento da biodiversidade",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por seu veneno poderoso?",
+        a: "Baleia-jubarte",
+        b: "Polvo-de-anéis-azuis",
+        c: "Golfinho",
+        d: "Peixe-voador",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal razão para a acidificação dos oceanos?",
+        a: "Desmatamento",
+        b: "Aumento de CO2 na atmosfera",
+        c: "Pesca excessiva",
+        d: "Aumento da temperatura da água",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por suas habilidades de camuflagem?",
+        a: "Estrela-do-mar",
+        b: "Camarão",
+        c: "Polvo",
+        d: "Golfinho",
+        correta: "c"
+    },
+    {
+        pergunta: "Qual é a principal função dos manguezais para as comunidades costeiras humanas?",
+        a: "Proteger contra tsunamis",
+        b: "Servir de fonte de petróleo",
+        c: "Filtrar poluentes industriais",
+        d: "Fornecer madeira e carvão",
+        correta: "a"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é uma espécie ameaçada de extinção?",
+        a: "Camarão",
+        b: "Golfinho-do-rio",
+        c: "Peixe-voador",
+        d: "Caravela-portuguesa",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal fonte de energia para a maioria dos ecossistemas marinhos?",
+        a: "Plantas terrestres",
+        b: "Luz solar",
+        c: "Energia geotérmica",
+        d: "Fósseis de dinossauros",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é o papel das algas marinhas na produção de oxigênio?",
+        a: "Consumir oxigênio",
+        b: "Produzir oxigênio através da fotossíntese",
+        c: "Reduzir a produção de oxigênio",
+        d: "Converter oxigênio em dióxido de carbono",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual destes animais marinhos é conhecido por formar cardumes grandes?",
+        a: "Tubarão-martelo",
+        b: "Sardinha",
+        c: "Golfinho",
+        d: "Estrela-do-mar",
+        correta: "b"
+    },
+    {
+        pergunta: "Qual é a principal função do zooplâncton nos oceanos?",
+        a: "Produzir petróleo",
+        b: "Servir de alimento para muitos animais marinhos",
+        c: "Aumentar a poluição",
+        d: "Reduzir a biodiversidade",
+        correta: "b"
+    }
+];
+
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-    ];
+    }
+
+    shuffle(dadosQuiz);
+    const questoesSelecionadas = dadosQuiz.slice(0, 10);
 
     let perguntaAtual = 0;
     let pontuacao = 0;
-
 
     const quizContainer = document.getElementById('quiz');
     const perguntaElemento = document.querySelector('.pergunta');
     const respostasContainer = document.querySelector('.respostas');
 
-
     function carregarQuiz() {
-        document.getElementById('numeroQuestao').style.display = 'block'
-        const quizAtual = dadosQuiz[perguntaAtual];
-
-        numeroQuestao.textContent = `${perguntaAtual + 1}`;
-
-        perguntaElemento.innerText = quizAtual.pergunta;
-        respostasContainer.innerHTML =
-            `<br>
+        document.getElementById('numeroQuestao').style.display = 'block';
+        if (perguntaAtual < questoesSelecionadas.length) {
+            const quizAtual = questoesSelecionadas[perguntaAtual];
+            numeroQuestao.textContent = `${perguntaAtual + 1}`;
+            perguntaElemento.innerText = quizAtual.pergunta;
+            respostasContainer.innerHTML =
+                `<br>
             <b>A:</b> ${quizAtual.a}<br>
             <b>B:</b> ${quizAtual.b}<br>
             <b>C:</b> ${quizAtual.c}<br>
             <b>D:</b> ${quizAtual.d}<br>`;
+        } else {
+            document.getElementById('respostas').style.display = 'none';
+            numeroQuestao.style.display = 'none';
+            document.getElementById('countdown').style.display = 'none';
+            if (pontuacao >= 6 && pontuacao<=9) {
+                quizContainer.innerHTML = `<h2>Muito bem!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
+            } else if (pontuacao == 10) {
+                quizContainer.innerHTML = `<h2>Parabéns, você gabaritou!!!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
+            } else if (pontuacao <= 5) {
+                quizContainer.innerHTML = `<h2>Que pena não foi dessa vez! :(<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
+            }
+        }
     }
 
     function enviarResposta(respostaSelecionada) {
         seconds = INITIAL_SECONDS;
 
-
-        if (respostaSelecionada == dadosQuiz[perguntaAtual].correta) {
+        if (respostaSelecionada === questoesSelecionadas[perguntaAtual].correta) {
             pontuacao++;
-
         }
+
         perguntaAtual++;
 
-        if (perguntaAtual < dadosQuiz.length) {
+        if (perguntaAtual < questoesSelecionadas.length) {
             carregarQuiz();
-            // numeroQuestao++;
-
         } else {
             document.getElementById('respostas').style.display = 'none';
             numeroQuestao.style.display = 'none';
             document.getElementById('countdown').style.display = 'none';
-            quizContainer.innerHTML = `
-            <h2>Sua pontuação: ${pontuacao}/${dadosQuiz.length}</h2>
-            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>
-        `;
-
+            if (pontuacao > 7) {
+                quizContainer.innerHTML = `<h2>Muito bem!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="window.location.reload()">Recarregar</button>`
+            } else if (pontuacao === 10) {
+                quizContainer.innerHTML = `<h2>Parabéns, você gabaritou!!!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="window.location.reload()">Recarregar</button>`
+            } else if (pontuacao <= 5) {
+                quizContainer.innerHTML = `<h2>Que pena não foi dessa vez! :(<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
+            <button id="comecarQuiz" onclick="window.location.reload()">Recarregar</button>`
+            }
         }
     }
 
@@ -409,16 +664,14 @@
         document.getElementById('telaInicial').style.display = 'none';
         document.querySelector('.corpo_perguntas').style.display = 'flex';
         carregarQuiz();
-
     });
+
     function regras() {
         document.querySelector('.modal_regras').style.display = 'flex';
     }
+
     function voltar() {
         document.querySelector('.modal_regras').style.display = 'none';
     }
-
-
-
 
 </script>

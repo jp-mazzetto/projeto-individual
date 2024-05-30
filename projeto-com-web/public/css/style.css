@@ -1,19 +1,21 @@
+html {
+    scroll-behavior: smooth;
+}
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     transition: all 0.3s;
+    
 }
 
-html {
-    scroll-behavior: smooth;
-}
+
 
 body {
     font-family: "montserrat";
     font-size: 20px;
     background: linear-gradient(#85c7f4, #5FA2CE, #003366, #00264d);
-
+    
 }
 
 input::placeholder {
@@ -24,7 +26,11 @@ input::placeholder {
     width: 5vw;
     height: 10vh;
     margin-left: 5vw;
-    float: left;
+    
+}
+.logo {
+    display: flex; /* Adicione esta linha */
+    align-items: center; /* Centraliza verticalmente a imagem dentro do logo */
 }
 
 .navbar {
@@ -34,7 +40,7 @@ input::placeholder {
     align-items: center;
     background: #F5F4F9;
     padding-right: 5vw;
-    width: 100%;
+    
 
 }
 
@@ -532,10 +538,13 @@ footer {
 .lembrar{
     font-size: 16px;
     margin-top: 2px;
-    margin-left: 9vw;
+    margin-left: 9.8vw;
     font-family: "montserrat";
     font-weight: 500;
     color: #003366;
+    display: flex;
+    align-items: center;
+    gap: 5px;
    
 }
 #botao_lembrar{
@@ -579,6 +588,9 @@ footer {
 #botao_lembrar:checked{
     background-color: #003366;
 }
+#botao_lembrar:hover{
+    background-color: #0060c0;
+}
 .modal_titulo{
     color: #003366;
     font-size: 50px;
@@ -606,6 +618,9 @@ footer {
     font-size: 16px;
     margin-left: 10.5vw;
     margin-top: 5vh;
+}
+.esqueceu:hover{
+    font-weight: bold;
     text-decoration: underline;
 }
 .linha-vertical {
@@ -745,9 +760,32 @@ button{
     color: #003366;
     border: none;
     cursor: pointer;
-    margin-left: 36vw;
+    margin-left: 65vw;
     font-size: 40px;
 
-    transform: translateY(-110%);
+    transform: translateY(-350%);
     position: absolute;
 }
+#botao_topo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 3vw;
+    height: 5vh;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: #418FDE;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 100%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.07);
+  }
+  
+  #botao_topo:hover {
+    background-color: rgb(147, 227, 252);
+  }
