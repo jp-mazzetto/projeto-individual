@@ -177,6 +177,10 @@ a {
     height: 8vh;
     font-size: 20px;
 }
+#saibaMais:hover{
+
+    background-color: #acd8f5;
+}
 
 .ultimasPostagens {
     width: 80%;
@@ -789,3 +793,14 @@ button{
   #botao_topo:hover {
     background-color: rgb(147, 227, 252);
   }
+  .vermais{
+    font-size: 14px;
+    margin-left: 28vw;
+    font-weight: 400;
+   
+  }
+  .vermais:hover{
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  

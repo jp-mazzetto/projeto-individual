@@ -51,7 +51,7 @@
                     oferece vídeos educativos, infográficos interativos e histórias inspiradoras sobre oceanos, vida
                     marinha e conservação. Venha se maravilhar conosco e junte-se à nossa jornada de descoberta e
                     aprendizado!</p>
-                <button id="botao_cadastro">CADASTRAR</button>
+              
             </div>
             <div id="foto_baleia">
                 <img src="./assets\imgs\rabo-baleia.jpg" alt="">
@@ -65,9 +65,10 @@
             <div id="texto_tubarao">
                 <p id="titulo_tubarao">Visão geral do projeto Blue Horizon</p>
                 <p id="subtitulo_tubarao">Explore as maravilhas dos oceanos e descubra um mundo de possibilidades além
-                    do horizonte azul.</p>
+                    do horizonte azul.</p><br>
+                    <p>Cadastre-se para ter acesso a um íncrivel Quiz e a um jogo de Palavras-Cruzadas exclusivo!</p>
             </div>
-            <button id="saibaMais">Saiba Mais</button>
+            <button id="saibaMais" onclick="document.getElementById('div_login').style.display='block'">Cadastrar</button>
 
         </div>
         <!-- ultimas postagens -->
@@ -81,8 +82,9 @@
                     <div id="texto_primeiraPostagem">Compartilhe uma emocionante recapitulação de uma recente expedição
                         submarina, destacando os incríveis recifes de coral e a diversidade de vida marinha encontrada
                         durante a viagem.</div>
+                        <a href="https://g1.globo.com/ap/amapa/noticia/2017/01/video-mostra-primeira-expedicao-submarina-em-corais-na-costa-do-ap.html" target="_blank" class="vermais">Ver mais... </a>
                 </div>
-            </div>
+              </div>
             <div id="segundaPostagem">
                 <img src="./assets\imgs\golfinhos.png" alt="">
                 <div>
@@ -90,6 +92,7 @@
                     <div id="texto_segundaPostagem">Descubra a beleza única dos oceanos. Cada local oferece uma
                         experiência de conexão com a natureza. Prepare-se para se encantar com a diversidade marinha e
                         inspirar-se a proteger esses ambientes para o futuro.</div>
+                        <a href="https://espacomergulho.com.br/top-10-melhores-lugares-do-mundo-pra-se-mergulhar-em-2019/" target="_blank" class="vermais">Ver mais...</a>
                 </div>
             </div>
             <div id="terceiraPostagem">
@@ -100,6 +103,7 @@
                         ambiental, por meio da coleta desses resíduos. Desta forma, compartilhamos informações sobre a
                         importância do ecossistema costeiro e os motivos pelos quais não se deve descartar lixo na
                         praia.</div>
+                        <a href="https://www.limpezadosmares.com/#:~:text=O%20Projeto%20Limpeza%20dos%20Mares,impacto%20negativo%20das%20a%C3%A7%C3%B5es%20humanas." target="_blank "class="vermais">Ver mais...</a>
                 </div>
             </div>
 
@@ -145,7 +149,7 @@
         <div class="form_grupo">
           <div class="campos_form" >
             <div  class="titulos_form">Nome: </div>
-          <input type="text" id="form_nome" class="inputs_form" placeholder="Insira seu nome aqui" >
+          <input type="text" id="form_nome" class="inputs_form" placeholder="Insira seu nome aqui" remember>
          </div>
          <div class="campos_form" >
             <div class="titulos_form">Telefone: </div>
@@ -389,7 +393,7 @@
 
 
   function enviarMensagem() {
-    id_form.innerHTML = `<h1 style="color: #003366; font-size: 44px; font-weight: 600;">Mensagem enviada com sucesso!</h1><img src="./assets\imgs\verificado.png" style="width: 20%; margin-left: 38%; margin-top: 2vh"> <button class="form_button" onclick="location.reload()"> Voltar</button>`
+    id_form.innerHTML = `<h1 style="color: #003366; font-size: 44px; font-weight: 600;">Mensagem enviada com sucesso!</h1><img src="./assets\imgs/verificado.png" alt="" style="width: 20%; margin-left: 38%; margin-top: 2vh"> <button class="form_button" onclick="location.reload()"> Voltar</button>`
   }
   function modalCadastro(){
    modal_formulario.style.display ="block"

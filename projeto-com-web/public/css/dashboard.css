@@ -446,3 +446,7 @@ button:nth-child(1) {
   gap: 2vw;
   color: #F3F3F3;
 }
+.sair{
+  margin-top: 20vh;
+  margin-left: 7vw;
+}
