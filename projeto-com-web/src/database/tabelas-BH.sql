@@ -21,6 +21,5 @@ CREATE TABLE quiz(
     pontuacao INT
     );
     
-CREATE TABLE detalheQuiz(
-	idDetalhe INT PRIMARY KEY AUTO_INCREMENT,
+
     
