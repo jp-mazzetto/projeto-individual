@@ -13,6 +13,7 @@ CREATE TABLE usuario(
 );
 
 SELECT * FROM usuario;
+-- truncate table usuario;
 CREATE TABLE quiz(
 	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
     numeroPergunta INT,
@@ -21,5 +22,12 @@ CREATE TABLE quiz(
     pontuacao INT
     );
     
+CREATE TABLE pontuacao(
+  idPontuacao INT AUTO_INCREMENT PRIMARY KEY,
+  qtdPontos INT NOT NULL
+);
 
+select * from pontuacao;
+
+-- drop table pontuacao;
     

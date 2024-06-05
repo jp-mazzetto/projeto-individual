@@ -188,7 +188,7 @@
           </div>
           <div class="botoes_cadastro">
          
-          <button class="form_button" >Salvar</button>
+          <button class="form_button" onclick="editar()">Salvar</button>
           </div>
           
    
@@ -212,4 +212,32 @@
 <script>
     nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
     Usuario.innerHTML=sessionStorage.NOME_USUARIO
+
+    function editar() {
+        fetch(`/perfil/editar/${sessionStorage.getItem("NOME_USUARIO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: form_cadastro_nome.value,
+                
+
+
+
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Perfil atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
+                window.location = "/dashboard/perfil.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 </script>
