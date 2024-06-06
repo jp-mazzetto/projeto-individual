@@ -136,14 +136,14 @@
     </div>
     <div><button class="bt_perfil">Enviar nova foto</button></div>
     <div class="caixaTexto">Envie uma nova foto de perfil. Imagens muito grandes serão redimensionadas automaticamente. <br> <br> Tamanho máximo de envio é <b>1MB</b></div>
-    <div class="memberSince">Membro desde: <b>30/05/2024</b></div>
+    <div class="memberSince">Membro desde: <b id="DT_CRIACAO">30/05/2024</b></div>
 </div>
 </div>
 <div class="perfil_direita">
     <div class="titulo_direita">Editar Perfil</div>
 
     <div class="modal_formulario" id="modal_formulario">
-            
+            <p id="validacaoEdicao">Troque apenas os campos que deseja alterar!</p> <br><br>
           <div class="form_grupo">
             <div class="campos_form_cadastro" >
               <div  class="titulos_form">Nome Completo: </div>
@@ -151,7 +151,7 @@
             <div id="mensagem_erro"></div>
            </div>
            <div class="campos_form_cadastro" >
-              <div class="titulos_form">CPF: </div>
+              <div class="titulos_form">Atualizar CPF: </div>
               <input type="text" id="form_cadastro_CPF" class="inputs_form_cadastro" placeholder="12345678910" maxlength="11">
               <div id="mensagem_erro"></div>
            </div>
@@ -159,7 +159,7 @@
           </div>
           <div class="form_grupo">
             <div class="campos_form_cadastro" >
-              <div  class="titulos_form">Email: </div>
+              <div  class="titulos_form">Atualizar Email: </div>
               <input type="email" id="form_cadastro_email" class="inputs_form_cadastro" placeholder="exemplo@gmail.com" >
               <div id="mensagem_erro"></div>
            </div>
@@ -167,7 +167,7 @@
 
           <div class="form_grupo">
             <div class="campos_form_cadastro" >
-              <div  class="titulos_form">Confirme seu email: </div>
+              <div  class="titulos_form">Confirme seu novo email: </div>
               <input type="email" id="form_cadastro_email" class="inputs_form_cadastro" placeholder="exemplo@gmail.com" >
               <div id="mensagem_erro"></div>
            </div>
@@ -175,12 +175,12 @@
 
           <div class="form_grupo">
             <div class="campos_form_cadastro">
-              <div class="titulos_form">Senha: </div>
+              <div class="titulos_form">Atualizar Senha: </div>
               <input id="form_senha" class="inputs_form_cadastro" placeholder="************" >
               <div id="mensagem_erro"></div>
            </div>
            <div class="campos_form_cadastro">
-            <div class="titulos_form">Confirme sua senha: </div>
+            <div class="titulos_form">Confirme sua nova senha: </div>
             <input id="form_confirmacao_senha" class="inputs_form_cadastro" placeholder="************" >
             <div id="mensagem_erro"></div>
          </div>
@@ -212,23 +212,41 @@
 <script>
     nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
     Usuario.innerHTML=sessionStorage.NOME_USUARIO
+    DT_CRIACAO.innerHTML = sessionStorage.DT_CRIACAO
+    idUsuario= sessionStorage.ID_USUARIO
 
     function editar() {
+        let novoNome = form_cadastro_nome.value;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         fetch(`/perfil/editar/${sessionStorage.getItem("NOME_USUARIO")}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nome: form_cadastro_nome.value,
-                
+                novoNome: form_cadastro_nome.value,
+                idUsuario: idUsuario,
 
 
 
             })
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
+            }).then(function (resposta) {
+                
+                if (resposta.ok) {
+                sessionStorage.setItem('NOME_USUARIO', novoNome);
                 window.alert("Perfil atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
                 window.location = "/dashboard/perfil.html"
             } else if (resposta.status == 404) {

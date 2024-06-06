@@ -9,7 +9,8 @@ CREATE TABLE usuario(
 	email VARCHAR(50) UNIQUE,
 	senha VARCHAR(50),
     fkQuiz INT NULL,
-    FOREIGN KEY (fkQuiz) REFERENCES quiz (idQuiz)
+    FOREIGN KEY (fkQuiz) REFERENCES quiz (idQuiz),
+    DT_CRIACAO DATE DEFAULT CURRENT_TIMESTAMP
 );
 
 SELECT * FROM usuario;
