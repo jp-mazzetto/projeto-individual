@@ -186,3 +186,36 @@
     justify-content: center;
     background-color: #f9f9f9;
   }
+
+
+  /* tabela */
+
+  #ranking_table {
+    color: white;
+    display: none;
+    width: 60vw;
+    overflow-y: auto;
+    border-collapse: collapse; 
+    background-color: #e5e5e5;/* Adiciona bordas colapsadas para o estilo de tabela */
+}
+
+#ranking_table th, #ranking_table td {
+    border: 1px solid white; /* Adiciona bordas brancas para células */
+    text-align: center; /* Centraliza o texto */
+    padding: 8px;
+    background-color: #e5e5e5; /* Adiciona espaço interno às células */
+}
+
+
+#verHistorico{
+  margin-top: 5vh;
+  margin-left: 20vw;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background-color:#003366;
+  color: #f9f9f9;
+  font-weight: bold;
+  border-radius: 5px;
+
+}

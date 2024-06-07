@@ -219,18 +219,6 @@
         let novoNome = form_cadastro_nome.value;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         fetch(`/perfil/editar/${sessionStorage.getItem("NOME_USUARIO")}`, {
             method: "PUT",
             headers: {
@@ -247,7 +235,7 @@
                 
                 if (resposta.ok) {
                 sessionStorage.setItem('NOME_USUARIO', novoNome);
-                window.alert("Perfil atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
+                window.alert("Nome atualizado com sucesso para: " + sessionStorage.getItem("NOME_USUARIO") + "!");
                 window.location = "/dashboard/perfil.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

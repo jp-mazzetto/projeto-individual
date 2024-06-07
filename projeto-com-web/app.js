@@ -19,6 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var quizRouter = require("./src/routes/quiz");
 var perfilRouter = require("./src/routes/perfil");
+var rankingRouter = require("./src/routes/ranking");
 
 
 
@@ -33,6 +34,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/quiz", quizRouter);
 app.use("/perfil", perfilRouter);
+app.use("/ranking", rankingRouter);
 
 
 

@@ -257,7 +257,7 @@
   .perfil_direita{
     background-color: #f9f9f9;
     width: 40vw;
-    height: 80vh;
+    height: 82vh;
     display: flex;
     text-align: center;
    
@@ -311,6 +311,7 @@
 }
 .botoes_cadastro{
     display: flex;
+    
 }
 .form_grupo {
     display: flex;
@@ -366,10 +367,10 @@
     align-items: center;
     justify-content: center;
     margin: auto;
-    margin-top: 1vh;
     width: 25%;
     height: auto;
     font-size: 24px;
+  
   }
   .form_button:hover{
     background-color: #02509e;

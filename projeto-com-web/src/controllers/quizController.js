@@ -2,10 +2,12 @@ var quizModel = require("../models/quizModel");
 
 function registrarPontos(req, res) {
     var qtdPontos = req.body.qtdPontos;
-    // var idUsuario = req.body.idUsuario;
+     var usuario = req.body.idUsuario;
+
+     console.log(`HSAGJSD; ${usuario}`)
     
 
-    quizModel.registrarPontos(qtdPontos).then(function (resultado) {
+    quizModel.registrarPontos(qtdPontos, usuario).then(function (resultado) {
         res.status(201).json({ message: "Pontuação guardada com sucesso!" });
     }).catch(function (erro) {
         console.log(erro);

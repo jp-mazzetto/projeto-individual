@@ -1,10 +1,10 @@
 var database = require("../database/config");
 
-function registrarPontos(qtdPontos) {
+function registrarPontos(qtdPontos, usuario) {
     console.log("ACESSEI O MEDIDA MODEL para registrar os pontos do Quiz", qtdPontos);
 
     var instrucao = `   
-        INSERT INTO pontuacao (qtdPontos) VALUES (${qtdPontos});
+        INSERT INTO pontuacao (qtdPontos, fkUsuario) VALUES (${qtdPontos}, ${usuario});
         `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

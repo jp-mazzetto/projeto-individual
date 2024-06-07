@@ -235,8 +235,10 @@
 </html>
 
 <script>
+  
 
 nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
+let idUsuario = sessionStorage.ID_USUARIO
 
     const numeroQuestao = document.getElementById('numeroQuestao');
     const countdownElement = document.getElementById('countdown');
@@ -597,14 +599,14 @@ nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
 ];
 
 
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    function randomizarLista(listaRandomizada) {
+        for (let contagem = listaRandomizada.length - 1; contagem > 0; contagem--) {
+            const numeroPergunta = Math.floor(Math.random() * (contagem + 1));
+            [listaRandomizada[contagem], listaRandomizada[numeroPergunta]] = [listaRandomizada[numeroPergunta], listaRandomizada[contagem]];
         }
     }
-
-    shuffle(dadosQuiz);
+    
+    randomizarLista(dadosQuiz);
     const questoesSelecionadas = dadosQuiz.slice(0, 10);
 
     let perguntaAtual = 0;
@@ -645,6 +647,8 @@ nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
         }
     }
 
+    
+    
     async  function enviarResposta(respostaSelecionada) {
         seconds = INITIAL_SECONDS;
 
@@ -685,7 +689,7 @@ nomeUsuario.innerHTML=sessionStorage.NOME_USUARIO
            
             body: JSON.stringify({
                 qtdPontos: pontuacao, 
-               
+                idUsuario: idUsuario
             })
         });
 
