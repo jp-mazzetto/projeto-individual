@@ -17,7 +17,7 @@ function listar() {
     FROM pontuacao as pontuacao3 GROUP BY fkUsuario
     ) pontuacao3 ON pontuacao2.fkUsuario = pontuacao3.fkUsuario AND pontuacao2.qtdPontos = pontuacao3.max_score
     GROUP BY pontuacao2.fkUsuario
-    ) ORDER BY pm.max_score DESC LIMIT 5;
+    ) ORDER BY pm.max_score DESC LIMIT 10;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

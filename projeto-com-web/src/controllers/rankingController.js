@@ -7,7 +7,7 @@ function listar(req, res) {
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
-        console.log("chegouususu")
+        console.log("Ranking atualizado com sucesso!")
     }).catch(function (erro) {
         console.log(erro);
         console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);

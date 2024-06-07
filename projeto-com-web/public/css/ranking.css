@@ -177,8 +177,7 @@
     display: flex;
     margin-top: 8vh;
     margin-left: 20vw;
-    width: 75%;
-    flex-direction: column;
+    width: 50%;
     height: 80vh;
     align-items: center;
     flex-direction: row;
@@ -189,33 +188,32 @@
 
 
   /* tabela */
-
+.janela{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.titulo_ranking{
+  display: flex;
+  margin-left: 30vw;
+  margin-bottom: 5vh;
+}
   #ranking_table {
     color: white;
-    display: none;
     width: 60vw;
     overflow-y: auto;
     border-collapse: collapse; 
-    background-color: #e5e5e5;/* Adiciona bordas colapsadas para o estilo de tabela */
+    background-color: #e5e5e5;
+    margin-left: 34vw;
+    margin-bottom: 4vh;
 }
 
 #ranking_table th, #ranking_table td {
     border: 1px solid white; /* Adiciona bordas brancas para células */
     text-align: center; /* Centraliza o texto */
     padding: 8px;
-    background-color: #e5e5e5; /* Adiciona espaço interno às células */
+    background-color: #e5e5e5;
+    color: #003366;
 }
 
-
-#verHistorico{
-  margin-top: 5vh;
-  margin-left: 20vw;
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-  background-color:#003366;
-  color: #f9f9f9;
-  font-weight: bold;
-  border-radius: 5px;
-
-}

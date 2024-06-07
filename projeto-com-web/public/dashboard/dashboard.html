@@ -229,7 +229,6 @@
             </div>
         </div>
     </div>
-    
 </body>
 
 </html>
@@ -636,13 +635,13 @@ let idUsuario = sessionStorage.ID_USUARIO
             document.getElementById('countdown').style.display = 'none';
             if (pontuacao >= 6 && pontuacao<=9) {
                 quizContainer.innerHTML = `<h2>Muito bem!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
-            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button> <button id="verRanking" onclick="verRanking()">Ver Ranking</button> `
             } else if (pontuacao == 10) {
                 quizContainer.innerHTML = `<h2>Parabéns, você gabaritou!!!<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
             <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
             } else if (pontuacao <= 5) {
                 quizContainer.innerHTML = `<h2>Que pena não foi dessa vez! :(<br><br>Sua pontuação foi de: ${pontuacao}/${questoesSelecionadas.length}</h2>
-            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button>`
+            <button id="comecarQuiz" onclick="location.reload()">Recarregar</button><button id="verRanking" onclick="verRanking()">Ver Ranking</button> `
             }
         }
     }
