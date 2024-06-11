@@ -432,10 +432,55 @@ a {
 
 }
 
+
 /* Contêiner para o formulário e o mapa */
 .form_mapa_container {
     display: flex;
+    width: 80%;
+    background-color: #F5F4F9;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    height: 110vh;
+    align-items: center;
+    margin-left: 20%;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
     
+}
+.tituloOnu{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5vh;
+    color: #003366;
+    font-style: italic;
+    font-size: 40px;
+    margin-top: 5vh;
+}
+.corpoOnu{
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    margin-bottom: 10vh;
+}
+.textoOnu{
+    height: 90vh;
+    width: 30vw;
+    color: #003366;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    text-align: justify;
+    background-color: #a8dcffa8;
+    padding: 36px;
+}
+.infografico{
+    height: 90vh;
+}
+.imgONU{
+    height: 60vh;
 }
 /* footer */
 
