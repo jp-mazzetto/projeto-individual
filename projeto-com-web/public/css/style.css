@@ -8,6 +8,20 @@ html {
     transition: all 0.3s;
     
 }
+
+body::-webkit-scrollbar {
+    width: 5px;           
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: transparent;       
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #003366;    
+    border-radius: 20px 0px 0px 20px;       
+    border: none;
+  }
 .div_validacao{
     color: red;
     font-size: 12px;
